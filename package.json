@@ -1,0 +1,31 @@
+{
+  "name": "torre_recommender_front",
+  "version": "1.0.0",
+  "description": "A web application to build networking opportunities by using data from Torre API.",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lincex7845/torre_recommender_front.git"
+  },
+  "author": "lincex7845",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/lincex7845/torre_recommender_front/issues"
+  },
+  "homepage": "https://github.com/lincex7845/torre_recommender_front#readme",
+  "dependencies": {
+    "bootstrap": "4.0.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "react-icons": "2.2.7",
+    "react-scripts": "1.1.0",
+    "reactstrap": "5.0.0-beta"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
