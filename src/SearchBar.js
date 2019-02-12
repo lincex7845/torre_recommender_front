@@ -26,13 +26,22 @@ class SearchBar extends Component {
             .catch(() => this.setState({ error: true }))
     }
 
-    handleClick = () => {
-        console.log("clicked")
+    requestRecommendations = () => {
         this.setState({
             query: this.search.value
         }, () => {
             this.getRecommendations()
         })
+    }
+
+    handleKeyPress = (event) => {
+        if (event.key == 'Enter') {
+            this.requestRecommendations()
+        }
+    }
+
+    handleClick = () => {
+        this.requestRecommendations()
     }
 
     render() {
@@ -42,9 +51,9 @@ class SearchBar extends Component {
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">@</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="username" aria-label="Username" aria-describedby="basic-addon1" ref={input => this.search = input} />
+                    <input type="text" class="form-control" placeholder="username" aria-label="Username" aria-describedby="basic-addon1" onKeyPress={this.handleKeyPress} ref={input => this.search = input} />
                     <div class="input-group-append">
-                    <button type="button" class="btn btn-success" onClick={this.handleClick}>Recommend</button>
+                        <button type="button" class="btn btn-success" onClick={this.handleClick}>Recommend</button>
                     </div>
                 </div>
                 <br></br>
