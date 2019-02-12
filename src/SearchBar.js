@@ -8,12 +8,13 @@ class SearchBar extends Component {
     state = {
         error: false,
         query: '',
-        user : [],
-        results : []
+        user: [],
+        results: []
     }
 
     getRecommendations = () => {
         let url = RECOMMENDATIONS_URI.replace('username', this.state.query)
+        console.log(this.state.query)
         const httpClient = axios.create();
         httpClient.defaults.timeout = 500;
         httpClient.get(url).then(({ data }) => {
@@ -25,24 +26,29 @@ class SearchBar extends Component {
             .catch(() => this.setState({ error: true }))
     }
 
-    handleInputChange = () => {
+    handleClick = () => {
+        console.log("clicked")
         this.setState({
             query: this.search.value
         }, () => {
-            if (this.state.query && this.state.query.length > 1) {
-                this.getRecommendations()
-            }
+            this.getRecommendations()
         })
     }
 
     render() {
         return (
-            <div className=" input-group-lm">
-                <form>
-                    <input type="search" className="form-control" ref={input => this.search = input}  onChange={this.handleInputChange} placeholder="Type your username from Torre Bio" id="username-search"></input>
-                </form>
+            <div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="username" aria-label="Username" aria-describedby="basic-addon1" ref={input => this.search = input} />
+                    <div class="input-group-append">
+                    <button type="button" class="btn btn-success" onClick={this.handleClick}>Recommend</button>
+                    </div>
+                </div>
                 <br></br>
-                <Recommendations user={this.state.user} results={this.state.results}/>
+                <Recommendations user={this.state.user} results={this.state.results} />
             </div>
         )
     }
